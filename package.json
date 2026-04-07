@@ -1,0 +1,36 @@
+{
+  "name": "shop",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "css": "npx @tailwindcss/cli -i ./src/input.css -o ./public/output.css --watch",
+    "serve": "npx live-server public",
+    "dev": "concurrently \"npm run css\" \"npm run serve\""
+  },
+  "dependencies": {
+    "detect-libc": "^2.1.2",
+    "enhanced-resolve": "^5.20.1",
+    "graceful-fs": "^4.2.11",
+    "is-extglob": "^2.1.1",
+    "is-glob": "^4.0.3",
+    "jiti": "^2.6.1",
+    "lightningcss": "^1.32.0",
+    "lightningcss-linux-x64-gnu": "^1.32.0",
+    "magic-string": "^0.30.21",
+    "mri": "^1.2.0",
+    "node-addon-api": "^7.1.1",
+    "picocolors": "^1.1.1",
+    "picomatch": "^4.0.4",
+    "source-map-js": "^1.2.1",
+    "tailwindcss": "^4.2.2",
+    "tapable": "^2.3.2"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "live-server": "^1.2.0"
+  }
+}
