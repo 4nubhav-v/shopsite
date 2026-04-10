@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A.K Singh Signage — Binnaguri</title>
     <link rel="stylesheet" type="" href="output.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Serif+Display&family=Nunito:wght@300;400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Nunito:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -14,35 +16,59 @@
   <body class="bg-[#0a0a0a] text-[#e8ddd0]">
     <!-- ═══════════ NAV ═══════════ -->
     <nav
-      class="sticky top-0 z-50 bg-[#0a0a0a] border-b-2 border-dashed border-[#3a2e1a] px-6 py-4 flex justify-between items-center"
+      id="mainNav"
+      class="sticky top-0 z-50 bg-[#0a0a0a] border-b border-[#1e1810] px-5 py-3 transition-all duration-300"
     >
-      <div
-        class="font-caveat font-bold text-2xl tracking-wide"
-        style="color: #c8973a"
-      >
-        A.K SINGH <span class="text-[#e8ddd0]">Signage</span>
+      <div class="max-w-5xl mx-auto flex justify-between items-center">
+        <a
+          href="#"
+          class="font-caveat font-bold text-2xl tracking-wide no-underline"
+          style="color: #c8973a"
+        >
+          A.K SINGH <span class="text-[#e8ddd0]">Signage</span>
+        </a>
+        <!-- Desktop nav -->
+        <ul class="hidden md:flex gap-1 list-none m-0 p-0">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#location" class="nav-link">Location</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <!-- Hamburger -->
+        <button
+          id="hamBtn"
+          class="md:hidden flex flex-col gap-1.5 p-2 cursor-pointer bg-transparent border-none"
+          aria-label="Toggle menu"
+          onclick="toggleMenu()"
+        >
+          <span class="ham-line"></span>
+          <span class="ham-line"></span>
+          <span class="ham-line"></span>
+        </button>
       </div>
-      <ul class="flex gap-2 list-none m-0 p-0">
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#gallery" class="nav-link">Gallery</a></li>
-        <li><a href="#location" class="nav-link">Location</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
+      <!-- Mobile nav -->
+      <div class="max-w-5xl mx-auto">
+        <div id="mobileNav" class="mobile-nav">
+          <a href="#about" class="mobile-nav-link" onclick="closeMobileNav()">About</a>
+          <a href="#services" class="mobile-nav-link" onclick="closeMobileNav()">Services</a>
+          <a href="#gallery" class="mobile-nav-link" onclick="closeMobileNav()">Gallery</a>
+          <a href="#location" class="mobile-nav-link" onclick="closeMobileNav()">Location</a>
+          <a href="#contact" class="mobile-nav-link" onclick="closeMobileNav()">Contact</a>
+        </div>
+      </div>
     </nav>
 
     <!-- ═══════════ HERO ═══════════ -->
     <section
-      class="relative overflow-hidden px-6 py-20 bg-[#0a0a0a]"
+      class="relative overflow-hidden px-6 py-24 md:py-32"
       style="
-        background: linear-gradient(
-          160deg,
-          #100e08 0%,
-          #0d0c09 50%,
-          #0a0905 100%
-        );
+        background: radial-gradient(ellipse at 50% 0%, #1c1608 0%, #0a0905 55%, #0a0a0a 100%);
       "
     >
+      <!-- Subtle noise texture overlay -->
+      <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true"
+        style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2264%22 height=%2264%22><filter id=%22n%22><feTurbulence baseFrequency=%220.9%22 numOctaves=%224%22/></filter><rect width=%2264%22 height=%2264%22 filter=%22url(%23n)%22 opacity=%221%22/></svg>');background-size:64px 64px"></div>
       <!-- Floating sticker decorations -->
       <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
         <!-- Top left -->
@@ -233,15 +259,15 @@
       <!-- Hero content -->
       <div class="relative z-10 max-w-2xl mx-auto text-center pt-4">
         <div
-          class="inline-block font-caveat font-bold text-sm px-5 py-1 rounded-full mb-6 text-[#0a0a0a]"
-          style="background: #c8973a; transform: rotate(-2deg)"
+          class="inline-block font-caveat font-bold text-sm px-5 py-1.5 rounded-full mb-7 text-[#0a0a0a]"
+          style="background: #c8973a; transform: rotate(-2deg); box-shadow: 0 4px 20px rgba(200,151,58,0.3)"
         >
           ✦ Handcrafted by ourselves ✦
         </div>
 
         <h1
           class="font-dm leading-tight mb-6"
-          style="font-size: clamp(2.6rem, 7vw, 4.5rem); color: #e8ddd0"
+          style="font-size: clamp(2.8rem, 7.5vw, 4.8rem); color: #e8ddd0; letter-spacing: -0.01em"
         >
           Acrylic Stickers &<br /><span
             style="color: #c8973a; font-style: italic"
@@ -250,36 +276,20 @@
         </h1>
 
         <p
-          class="text-sm leading-relaxed mb-8 max-w-md mx-auto font-light"
-          style="color: #8a7a6a"
+          class="leading-relaxed mb-9 max-w-md mx-auto"
+          style="color: #7a6e60; font-size: 0.95rem; font-weight: 300"
         >
           Custom-made acrylic stickers, name boards, and signage — designed with
           character and cut with precision. Based in Binnaguri, West Bengal.
         </p>
 
-        <div class="flex gap-4 flex-wrap justify-center mb-10">
-          <a
-            href="#gallery"
-            class="font-caveat font-bold text-base px-7 py-3 rounded-full text-[#0a0a0a] transition-all"
-            style="background: #c8973a; box-shadow: 3px 3px 0 #7a5c1e"
-            >See Our Work</a
-          >
-          <a
-            href="#contact"
-            class="font-caveat font-bold text-base px-7 py-3 rounded-full border-2 transition-all"
-            style="
-              border-color: #c8973a;
-              color: #c8973a;
-              background: transparent;
-            "
-            onmouseover="this.style.background = '#1a1408'"
-            onmouseout="this.style.background = 'transparent'"
-            >Get in Touch</a
-          >
+        <div class="flex gap-4 flex-wrap justify-center mb-12">
+          <a href="#gallery" class="btn-primary">See Our Work</a>
+          <a href="#contact" class="btn-outline">Get in Touch</a>
         </div>
 
         <!-- Deco sticker row -->
-        <div class="flex gap-4 flex-wrap justify-center">
+        <div class="flex gap-3 flex-wrap justify-center">
           <div
             class="wiggle deco-sticker sticker-shadow"
             style="
@@ -317,147 +327,142 @@
     </section>
 
     <!-- ═══════════ ABOUT ═══════════ -->
-    <section id="about" class="py-16 px-6 bg-[#0d0c09]">
+    <section id="about" class="py-20 px-6 bg-[#0d0c09]">
       <div
-        class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start"
+        class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-center"
       >
         <!-- Cards column -->
-        <div class="flex flex-col gap-3">
+        <div class="flex flex-col gap-3 reveal">
           <div
             class="about-card sticker-shadow"
-            style="border: 2px solid #c8973a"
+            style="border: 1.5px solid #c8973a"
           >
-            <span style="font-size: 1.3rem">✂</span> Precision laser cutting
+            <span style="font-size: 1.4rem">✂</span> Precision laser cutting
           </div>
           <div
-            class="about-card sticker-shadow-red ml-8"
-            style="border: 2px solid #c04020"
+            class="about-card sticker-shadow-red ml-6"
+            style="border: 1.5px solid #c04020"
           >
-            <span style="font-size: 1.3rem">★</span> Vibrant full-color prints
+            <span style="font-size: 1.4rem">★</span> Vibrant full-color prints
           </div>
           <div
             class="about-card sticker-shadow-green"
-            style="border: 2px solid #3a6e3a"
+            style="border: 1.5px solid #3a6e3a"
           >
-            <span style="font-size: 1.3rem">✦</span> Durable acrylic material
+            <span style="font-size: 1.4rem">✦</span> Durable acrylic material
           </div>
           <div
             class="about-card sticker-shadow ml-6"
-            style="border: 2px solid #c8973a"
+            style="border: 1.5px solid #c8973a"
           >
-            <span style="font-size: 1.3rem">✿</span> Any shape, any size
+            <span style="font-size: 1.4rem">✿</span> Any shape, any size
           </div>
         </div>
 
         <!-- Text column -->
-        <div>
-          <div class="eyebrow mb-2">Who we are</div>
+        <div class="reveal" style="transition-delay:0.15s">
+          <div class="eyebrow mb-3">Who we are</div>
           <h2
             class="font-dm leading-tight mb-5"
-            style="font-size: clamp(1.8rem, 4vw, 2.8rem); color: #e8ddd0"
+            style="font-size: clamp(2rem, 4.5vw, 3rem); color: #e8ddd0; letter-spacing: -0.01em"
           >
             More than<br />just stickers
           </h2>
           <p
-            class="text-sm leading-relaxed mb-4 font-light"
-            style="color: #8a7a6a"
+            class="leading-relaxed mb-4"
+            style="color: #7a6e60; font-size: 0.92rem; font-weight: 300"
           >
-            A.K Singh Signage is a local businesses shop in Binnaguri creating
+            A.K Singh Signage is a local business shop in Binnaguri creating
             handcrafted acrylic stickers, decorative name boards, shop signs,
             and custom signage for homes and businesses.
           </p>
           <p
-            class="text-sm leading-relaxed mb-6 font-light"
-            style="color: #8a7a6a"
+            class="leading-relaxed mb-7"
+            style="color: #7a6e60; font-size: 0.92rem; font-weight: 300"
           >
             Every piece is made with care — bold colours, clean cuts, and
             designs that last. Whether you need a single keepsake sticker or a
             full shopfront display, we've got you covered.
           </p>
-          <a
-            href="#contact"
-            class="inline-block font-caveat font-bold text-base px-7 py-3 rounded-full text-[#0a0a0a] transition-all"
-            style="background: #c8973a; box-shadow: 3px 3px 0 #7a5c1e"
-            >Order Yours Now</a
-          >
+          <a href="#contact" class="btn-primary">Order Yours Now</a>
         </div>
       </div>
     </section>
 
     <!-- ═══════════ SERVICES ═══════════ -->
-    <section id="services" class="py-16 px-6 bg-[#0a0a0a]">
+    <section id="services" class="py-20 px-6 bg-[#0a0a0a]" style="background: radial-gradient(ellipse at 50% 100%, #120f07 0%, #0a0a0a 70%)">
       <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-10">
-          <div class="eyebrow justify-center mb-2">What we offer</div>
+        <div class="text-center mb-12 reveal">
+          <div class="eyebrow justify-center mb-3">What we offer</div>
           <h2
             class="font-dm leading-tight"
-            style="font-size: clamp(1.8rem, 4vw, 2.8rem); color: #e8ddd0"
+            style="font-size: clamp(2rem, 4.5vw, 3rem); color: #e8ddd0; letter-spacing: -0.01em"
           >
             Our Specialities
           </h2>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="feature-card">
-            <div class="text-4xl mb-3">🪧</div>
+          <div class="feature-card reveal" style="transition-delay:0.05s">
+            <div class="text-4xl mb-4">🪧</div>
             <h3
-              class="font-caveat font-bold text-lg mb-1"
+              class="font-caveat font-bold text-xl mb-2"
               style="color: #e8ddd0"
             >
               Shop Signs
             </h3>
             <p
-              class="text-xs leading-relaxed font-light"
-              style="color: #6a5e50"
+              class="text-xs leading-relaxed"
+              style="color: #5a5040; font-weight: 400"
             >
               Eye-catching boards for your business frontage
             </p>
             <div class="svc-bar mx-auto"></div>
           </div>
-          <div class="feature-card">
-            <div class="text-4xl mb-3">✨</div>
+          <div class="feature-card reveal" style="transition-delay:0.1s">
+            <div class="text-4xl mb-4">✨</div>
             <h3
-              class="font-caveat font-bold text-lg mb-1"
+              class="font-caveat font-bold text-xl mb-2"
               style="color: #e8ddd0"
             >
               Name Plates
             </h3>
             <p
-              class="text-xs leading-relaxed font-light"
-              style="color: #6a5e50"
+              class="text-xs leading-relaxed"
+              style="color: #5a5040; font-weight: 400"
             >
-              Elegant home & office name boards
+              Elegant home &amp; office name boards
             </p>
             <div class="svc-bar mx-auto"></div>
           </div>
-          <div class="feature-card">
-            <div class="text-4xl mb-3">🎨</div>
+          <div class="feature-card reveal" style="transition-delay:0.15s">
+            <div class="text-4xl mb-4">🎨</div>
             <h3
-              class="font-caveat font-bold text-lg mb-1"
+              class="font-caveat font-bold text-xl mb-2"
               style="color: #e8ddd0"
             >
               Custom Stickers
             </h3>
             <p
-              class="text-xs leading-relaxed font-light"
-              style="color: #6a5e50"
+              class="text-xs leading-relaxed"
+              style="color: #5a5040; font-weight: 400"
             >
               Any shape, waterproof and long-lasting
             </p>
             <div class="svc-bar mx-auto"></div>
           </div>
-          <div class="feature-card">
-            <div class="text-4xl mb-3">🎁</div>
+          <div class="feature-card reveal" style="transition-delay:0.2s">
+            <div class="text-4xl mb-4">🎁</div>
             <h3
-              class="font-caveat font-bold text-lg mb-1"
+              class="font-caveat font-bold text-xl mb-2"
               style="color: #e8ddd0"
             >
               Gift Items
             </h3>
             <p
-              class="text-xs leading-relaxed font-light"
-              style="color: #6a5e50"
+              class="text-xs leading-relaxed"
+              style="color: #5a5040; font-weight: 400"
             >
-              Personalised keychains, frames & more
+              Personalised keychains, frames &amp; more
             </p>
             <div class="svc-bar mx-auto"></div>
           </div>
@@ -468,7 +473,7 @@
     <!-- ═══════════ GALLERY ═══════════ -->
     <section
       id="gallery"
-      class="py-16 px-6 bg-[#0d0c09] relative overflow-hidden"
+      class="py-20 px-6 bg-[#0d0c09] relative overflow-hidden"
     >
       <!-- BG floating stickers -->
       <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -512,7 +517,7 @@
             width="38"
             height="38"
             viewBox="0 0 40 40"
-            style="transform: rotate(25deg); opacity: 0.25"
+            style="transform: rotate(25deg); opacity: 0.2"
           >
             <polygon
               points="20,2 24,15 38,15 27,24 31,37 20,28 9,37 13,24 2,15 16,15"
@@ -523,20 +528,20 @@
       </div>
 
       <div class="max-w-5xl mx-auto relative z-10">
-        <div class="text-center mb-6">
-          <div class="eyebrow justify-center mb-2">Our work</div>
+        <div class="text-center mb-8 reveal">
+          <div class="eyebrow justify-center mb-3">Our work</div>
           <h2
             class="font-dm leading-tight"
-            style="font-size: clamp(1.8rem, 4vw, 2.8rem); color: #e8ddd0"
+            style="font-size: clamp(2rem, 4.5vw, 3rem); color: #e8ddd0; letter-spacing: -0.01em"
           >
             The Gallery
           </h2>
         </div>
 
         <!-- Filters -->
-        <div class="flex gap-2 flex-wrap justify-center mb-8">
+        <div class="flex gap-2 flex-wrap justify-center mb-8 reveal" style="transition-delay:0.1s">
           <button
-            class="gal-filter active font-caveat font-bold text-sm px-5 py-2 rounded-full border-2 transition-all cursor-pointer"
+            class="gal-filter active font-caveat font-bold text-sm px-5 py-2 rounded-full border-2 cursor-pointer"
             style="
               border-color: #c8973a;
               color: #e8ddd0;
@@ -547,7 +552,7 @@
             All
           </button>
           <button
-            class="gal-filter font-caveat font-bold text-sm px-5 py-2 rounded-full border-2 transition-all cursor-pointer"
+            class="gal-filter font-caveat font-bold text-sm px-5 py-2 rounded-full border-2 cursor-pointer"
             style="
               border-color: #2a2218;
               color: #6a5e50;
@@ -558,7 +563,7 @@
             Stickers
           </button>
           <button
-            class="gal-filter font-caveat font-bold text-sm px-5 py-2 rounded-full border-2 transition-all cursor-pointer"
+            class="gal-filter font-caveat font-bold text-sm px-5 py-2 rounded-full border-2 cursor-pointer"
             style="
               border-color: #2a2218;
               color: #6a5e50;
@@ -569,7 +574,7 @@
             Signs
           </button>
           <button
-            class="gal-filter font-caveat font-bold text-sm px-5 py-2 rounded-full border-2 transition-all cursor-pointer"
+            class="gal-filter font-caveat font-bold text-sm px-5 py-2 rounded-full border-2 cursor-pointer"
             style="
               border-color: #2a2218;
               color: #6a5e50;
@@ -580,7 +585,7 @@
             Name Plates
           </button>
           <button
-            class="gal-filter font-caveat font-bold text-sm px-5 py-2 rounded-full border-2 transition-all cursor-pointer"
+            class="gal-filter font-caveat font-bold text-sm px-5 py-2 rounded-full border-2 cursor-pointer"
             style="
               border-color: #2a2218;
               color: #6a5e50;
@@ -594,9 +599,9 @@
 
         <!-- Grid -->
         <div
-          class="grid gap-3"
+          class="grid gap-3 reveal"
           id="galGrid"
-          style="grid-template-columns: repeat(auto-fill, minmax(180px, 1fr))"
+          style="grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); transition-delay:0.2s"
         >
           <div
             class="gal-item border-2"
@@ -819,7 +824,7 @@
             >
           </div>
         </div>
-        <p class="text-center text-xs mt-4" style="color: #3a3020">
+        <p class="text-center text-xs mt-5" style="color: #3a3020; letter-spacing: 0.04em">
           Replace placeholders with your real product photos. Use the upload
           button to add images.
         </p>
@@ -833,11 +838,11 @@
       onclick="closeLBOut(event)"
     >
       <div
-        class="bg-[#111009] border-2 border-[#2a2218] rounded-2xl p-8 max-w-md w-11/12 relative"
-        style="border-top-color: #c8973a; border-top-width: 3px"
+        class="lb-inner bg-[#111009] border border-[#2a2218] rounded-2xl p-7 max-w-md w-11/12 relative"
+        style="border-top: 2px solid #c8973a; box-shadow: 0 24px 64px rgba(0,0,0,0.7)"
       >
         <button
-          class="absolute top-3 right-4 font-caveat font-bold text-base cursor-pointer bg-transparent border-none"
+          class="absolute top-3 right-4 font-caveat font-bold text-base cursor-pointer bg-transparent border-none transition-colors"
           style="color: #6a5e50"
           onmouseover="this.style.color = '#c8973a'"
           onmouseout="this.style.color = '#6a5e50'"
@@ -868,7 +873,7 @@
           </svg>
         </div>
         <div
-          class="font-caveat font-bold text-2xl"
+          class="font-caveat font-bold text-2xl leading-tight"
           style="color: #e8ddd0"
           id="lbTitle"
         ></div>
@@ -881,13 +886,13 @@
     </div>
 
     <!-- ═══════════ LOCATION ═══════════ -->
-    <section id="location" class="py-16 px-6 bg-[#0a0a0a]">
+    <section id="location" class="py-20 px-6 bg-[#0a0a0a]">
       <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-6">
-          <div class="eyebrow justify-center mb-2">Where to find us</div>
+        <div class="text-center mb-8 reveal">
+          <div class="eyebrow justify-center mb-3">Where to find us</div>
           <h2
             class="font-dm leading-tight mb-2"
-            style="font-size: clamp(1.8rem, 4vw, 2.8rem); color: #e8ddd0"
+            style="font-size: clamp(2rem, 4.5vw, 3rem); color: #e8ddd0; letter-spacing: -0.01em"
           >
             Visit Our Shop 📍
           </h2>
@@ -895,7 +900,8 @@
 
         <!-- Map frame -->
         <div
-          class="max-w-3xl mx-auto rounded-2xl overflow-hidden border-2 border-dashed border-[#3a2e1a]"
+          class="max-w-3xl mx-auto rounded-2xl overflow-hidden border border-[#2a2218] reveal glow-ring"
+          style="transition-delay:0.1s"
         >
           <div
             class="h-80 bg-[#111009] flex flex-col items-center justify-center gap-3"
@@ -916,59 +922,56 @@
     </section>
 
     <!-- ═══════════ CONTACT ═══════════ -->
-    <section id="contact" class="py-16 px-6 bg-[#0d0c09]">
+    <section id="contact" class="py-20 px-6 bg-[#0d0c09]" style="background: radial-gradient(ellipse at 50% 0%, #1a1408 0%, #0d0c09 60%)">
       <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-10">
-          <div class="eyebrow justify-center mb-2">Get in touch</div>
+        <div class="text-center mb-12 reveal">
+          <div class="eyebrow justify-center mb-3">Get in touch</div>
           <h2
             class="font-dm leading-tight"
-            style="font-size: clamp(1.8rem, 4vw, 2.8rem); color: #e8ddd0"
+            style="font-size: clamp(2rem, 4.5vw, 3rem); color: #e8ddd0; letter-spacing: -0.01em"
           >
             Let's Make Something Together
           </h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="contact-card text-center">
-            <a href="tel:+919735952700">
-              <div class="text-3xl mb-3">📞</div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="contact-card text-center reveal" style="transition-delay:0.05s">
+            <a href="tel:+919735952700" style="text-decoration:none">
+              <div class="text-3xl mb-4">📞</div>
               <div
-                class="font-caveat font-bold text-lg mb-1"
+                class="font-caveat font-bold text-xl mb-2"
                 style="color: #e8ddd0"
               >
                 Call / WhatsApp
               </div>
-              <p class="text-sm font-light" style="color: #6a5e50">
-                +91 9735952700<br /><span
-                  class="text-xs"
-                  style="color: #3a3020"
-                ></span>
+              <p class="leading-relaxed" style="color: #5a5040; font-size: 0.88rem; font-weight: 300">
+                +91 9735952700
               </p>
             </a>
           </div>
 
-          <div class="contact-card text-center">
-            <div class="text-3xl mb-3">📍</div>
+          <div class="contact-card text-center reveal" style="transition-delay:0.1s">
+            <div class="text-3xl mb-4">📍</div>
             <div
-              class="font-caveat font-bold text-lg mb-1"
+              class="font-caveat font-bold text-xl mb-2"
               style="color: #e8ddd0"
             >
               Location
             </div>
-            <p class="text-sm font-light" style="color: #6a5e50">
-              Opposite Momo Hut, Binnaguri, West Bengal <br />
-              India - 735203
+            <p class="leading-relaxed" style="color: #5a5040; font-size: 0.88rem; font-weight: 300">
+              Opposite Momo Hut, Binnaguri,<br />
+              West Bengal, India — 735203
             </p>
           </div>
 
-          <div class="contact-card text-center">
-            <div class="text-3xl mb-3">🕐</div>
+          <div class="contact-card text-center reveal" style="transition-delay:0.15s">
+            <div class="text-3xl mb-4">🕐</div>
             <div
-              class="font-caveat font-bold text-lg mb-1"
+              class="font-caveat font-bold text-xl mb-2"
               style="color: #e8ddd0"
             >
               Open Hours
             </div>
-            <p class="text-sm font-light" style="color: #6a5e50">
+            <p class="leading-relaxed" style="color: #5a5040; font-size: 0.88rem; font-weight: 300">
               Mon–Sat: 10am – 7pm<br />Sun: By appointment
             </p>
           </div>
@@ -978,38 +981,93 @@
 
     <!-- ═══════════ FOOTER ═══════════ -->
     <footer
-      class="bg-[#060504] border-t border-[#1a1408] px-6 py-8 text-center"
+      class="bg-[#060504] border-t border-[#1a1408] px-6 py-10 text-center"
+      style="background: linear-gradient(to top, #040302, #060504)"
     >
-      <div class="font-caveat font-bold text-2xl mb-1" style="color: #c8973a">
+      <div class="font-caveat font-bold text-3xl mb-2" style="color: #c8973a">
         A.K SINGH Signage
       </div>
-      <p class="text-xs mb-1" style="color: #6a5e50">
-        Handcrafted acrylic stickers & signage in Binnaguri
+      <p class="mb-1" style="color: #4a4030; font-size: 0.82rem; letter-spacing: 0.04em">
+        Handcrafted acrylic stickers &amp; signage in Binnaguri
       </p>
-      <p class="text-xs" style="color: #2a2218">
-        Made by <a href="https://github.com/4nubhav-v">@Anubhav</a>
+      <div class="flex justify-center gap-6 my-5">
+        <a href="#about" class="nav-link" style="font-size:0.72rem">About</a>
+        <a href="#services" class="nav-link" style="font-size:0.72rem">Services</a>
+        <a href="#gallery" class="nav-link" style="font-size:0.72rem">Gallery</a>
+        <a href="#contact" class="nav-link" style="font-size:0.72rem">Contact</a>
+      </div>
+      <p style="color: #2a2218; font-size: 0.75rem">
+        Made with ♥ by <a href="https://github.com/4nubhav-v" style="color:#3a3020;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#c8973a'" onmouseout="this.style.color='#3a3020'">@Anubhav</a>
       </p>
     </footer>
 
     <!-- ═══════════ SCRIPTS ═══════════ -->
     <script>
+      /* ── Mobile nav ── */
+      var menuOpen = false;
+      function toggleMenu() {
+        menuOpen = !menuOpen;
+        document.getElementById("hamBtn").classList.toggle("ham-open", menuOpen);
+        document.getElementById("mobileNav").classList.toggle("open", menuOpen);
+      }
+      function closeMobileNav() {
+        menuOpen = false;
+        document.getElementById("hamBtn").classList.remove("ham-open");
+        document.getElementById("mobileNav").classList.remove("open");
+      }
+
+      /* ── Nav scroll effect ── */
+      var nav = document.getElementById("mainNav");
+      window.addEventListener("scroll", function () {
+        nav.classList.toggle("nav-scrolled", window.scrollY > 30);
+      }, { passive: true });
+
+      /* ── Scroll reveal ── */
+      var revealEls = document.querySelectorAll(".reveal, .reveal-scale");
+      var revealObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+      revealEls.forEach(function (el) { revealObs.observe(el); });
+
+      /* ── Active nav link on scroll ── */
+      var sections = document.querySelectorAll("section[id]");
+      var navLinks = document.querySelectorAll(".nav-link");
+      var activeObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            navLinks.forEach(function (a) { a.classList.remove("active"); });
+            var match = document.querySelector('.nav-link[href="#' + entry.target.id + '"]');
+            if (match) match.classList.add("active");
+          }
+        });
+      }, { rootMargin: "-40% 0px -55% 0px" });
+      sections.forEach(function (s) { activeObs.observe(s); });
+
+      /* ── Gallery filter ── */
       function gF(cat, btn) {
-        document.querySelectorAll(".gal-filter").forEach((b) => {
+        document.querySelectorAll(".gal-filter").forEach(function (b) {
           b.classList.remove("active");
           b.style.background = "transparent";
           b.style.color = "#6a5e50";
           b.style.borderColor = "#2a2218";
+          b.style.boxShadow = "";
         });
         btn.classList.add("active");
-        document.querySelectorAll("#galGrid [data-cat]").forEach((el) => {
+        document.querySelectorAll("#galGrid [data-cat]").forEach(function (el) {
           if (el.dataset.cat === "upload") return;
           el.classList.toggle(
             "hidden-item",
-            cat !== "all" && el.dataset.cat !== cat,
+            cat !== "all" && el.dataset.cat !== cat
           );
         });
       }
 
+      /* ── Lightbox ── */
       function openLB(src, title, tag) {
         var w = document.getElementById("lbWrap");
         var img = document.getElementById("lbImg");
@@ -1025,15 +1083,21 @@
           ph.style.display = "flex";
         }
         w.classList.add("open");
+        document.body.style.overflow = "hidden";
       }
 
       function closeLB() {
         document.getElementById("lbWrap").classList.remove("open");
+        document.body.style.overflow = "";
       }
       function closeLBOut(e) {
         if (e.target === document.getElementById("lbWrap")) closeLB();
       }
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeLB();
+      });
 
+      /* ── Image upload ── */
       function handleUp(e) {
         var grid = document.getElementById("galGrid");
         var uc = document.getElementById("galUpload");
@@ -1049,7 +1113,7 @@
             el.innerHTML =
               '<img src="' +
               src +
-              '" style="width:100%;height:100%;object-fit:cover;border-radius:14px"><div class="gal-overlay"><span class="font-caveat font-bold text-base text-[#0a0a0a]">View ★</span></div>';
+              '" style="width:100%;height:100%;object-fit:cover;border-radius:16px"><div class="gal-overlay"><span class="font-caveat font-bold text-base text-[#0a0a0a]">View ★</span></div>';
             el.onclick = function () {
               openLB(src, name, "Uploaded");
             };
