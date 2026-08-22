@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #c8973a;
+  --color-ink: #0a0a0a;
+  --color-cream: #f5ead7;
+
+  --font-caveat: "Caveat", cursive;
+
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@layer components {
+  /* ── Nav ── */
+  .nav-link {
+    @apply text-sm font-semibold text-[#8a7a6a] no-underline px-3 py-2 rounded-full transition-colors duration-200 hover:text-gold;
+  }
+
+  .nav-link.active {
+    @apply text-gold bg-[#161209];
+  }
+
+  .nav-scrolled {
+    @apply shadow-[0_4px_20px_rgba(0,0,0,0.4)] bg-[#0a0a0af2] backdrop-blur;
+  }
+
+  .ham-line {
+    @apply block w-6 h-[2px] bg-gold rounded-full transition-all duration-300;
+  }
+
+  .ham-open .ham-line:nth-child(1) {
+    @apply translate-y-[7px] rotate-45;
+  }
+
+  .ham-open .ham-line:nth-child(2) {
+    @apply opacity-0;
+  }
+
+  .ham-open .ham-line:nth-child(3) {
+    @apply -translate-y-[7px] -rotate-45;
+  }
+
+  .mobile-nav {
+    @apply grid grid-rows-[0fr] overflow-hidden transition-[grid-template-rows] duration-300 ease-out;
+  }
+
+  .mobile-nav.open {
+    @apply grid-rows-[1fr];
+  }
+
+  .mobile-nav-inner {
+    @apply overflow-hidden flex flex-col gap-1 pb-3;
+  }
+
+  .mobile-nav-link {
+    @apply text-sm font-semibold text-[#8a7a6a] no-underline px-3 py-2.5 rounded-lg transition-colors duration-200 hover:text-gold hover:bg-[#161209];
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-block font-caveat font-bold text-lg px-7 py-3 rounded-full text-ink bg-gold no-underline transition-transform duration-200 shadow-[0_4px_20px_rgba(200,151,58,0.3)] hover:-translate-y-0.5;
+  }
+
+  .btn-outline {
+    @apply inline-block font-caveat font-bold text-lg px-7 py-3 rounded-full text-cream border-2 border-gold no-underline transition-colors duration-200 hover:bg-gold hover:text-ink;
+  }
+
+  /* ── Decorative stickers ── */
+  .deco-sticker {
+    @apply font-caveat font-bold text-sm px-4 py-2 border-2 rounded-full whitespace-nowrap select-none;
+  }
+
+  .sticker-shadow {
+    box-shadow: 3px 3px 0 #7a5c1e;
+  }
+
+  .sticker-shadow-red {
+    box-shadow: 3px 3px 0 #6e2412;
+  }
+
+  .sticker-shadow-green {
+    box-shadow: 3px 3px 0 #1e3a1e;
+  }
+
+  /* ── Float animations ── */
+  .float,
+  .float2,
+  .float3,
+  .float4,
+  .float5 {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float2 {
+    animation-duration: 7s;
+  }
+
+  .float3 {
+    animation-duration: 5.5s;
+  }
+
+  .float4 {
+    animation-duration: 8s;
+  }
+
+  .float5 {
+    animation-duration: 6.5s;
+  }
+
+  /* ── About ── */
+  .about-card {
+    @apply font-semibold text-sm px-5 py-4 rounded-2xl bg-[#161209] flex items-center gap-3 text-cream max-w-xs;
+  }
+
+  .eyebrow {
+    @apply font-caveat font-bold text-lg text-gold flex items-center gap-2 tracking-wide;
+  }
+
+  /* ── Services ── */
+  .feature-card {
+    @apply bg-[#0d0c09] border border-[#2a2218] rounded-2xl px-4 py-7 text-center transition-transform duration-300 hover:-translate-y-1 hover:border-gold;
+  }
+
+  .svc-bar {
+    @apply w-8 h-[3px] rounded-full bg-gold mt-4 opacity-60;
+  }
+
+  /* ── Gallery ── */
+  .gal-item {
+    @apply relative rounded-2xl overflow-hidden bg-[#111009] p-4 flex flex-col justify-end aspect-square cursor-pointer transition-transform duration-300 hover:-translate-y-1;
+  }
+
+  .gal-overlay {
+    @apply absolute inset-0 flex items-center justify-center bg-[rgba(200,151,58,0.88)] opacity-0 transition-opacity duration-300;
+  }
+
+  .gal-item:hover .gal-overlay {
+    @apply opacity-100;
+  }
+
+  .gal-upload {
+    @apply relative rounded-2xl border-2 border-dashed border-[#2a2218] aspect-square flex flex-col items-center justify-center gap-2 cursor-pointer transition-colors duration-200 hover:border-gold;
+  }
+
+  .gal-upload input[type="file"] {
+    @apply absolute inset-0 opacity-0 cursor-pointer;
+  }
+
+  .hidden-item {
+    @apply hidden;
+  }
+
+  /* ── Lightbox ── */
+  .lb-wrap {
+    @apply hidden bg-black/80 backdrop-blur-sm;
+  }
+
+  .lb-wrap.open {
+    @apply flex;
+  }
+
+  /* ── Location ── */
+  .glow-ring {
+    box-shadow:
+      0 0 0 1px rgba(200, 151, 58, 0.15),
+      0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  /* ── Contact ── */
+  .contact-card {
+    @apply bg-[#111009] border border-[#2a2218] rounded-2xl px-6 py-8 transition-transform duration-300 hover:-translate-y-1 hover:border-gold;
+  }
+
+  /* ── Scroll reveal ── */
+  .reveal {
+    @apply opacity-0 translate-y-6 transition-all duration-700 ease-out;
+  }
+
+  .reveal.visible {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
