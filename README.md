@@ -1,54 +1,75 @@
-# A.K Singh Signage — React + Tailwind
+# React + TypeScript + Vite
 
-A componentized React/JSX rebuild of the original static HTML page, styled
-with Tailwind CSS. Verified with a production `vite build` (no errors).
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Run it
+Currently, two official plugins are available:
 
-```bash
-npm install
-npm run dev      # http://localhost:5173
-npm run build    # production build to dist/
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+
 ```
 
-## Structure
+You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 
 ```
-src/
-  App.jsx                 – composes all sections, owns lightbox state
-  index.css                – Tailwind directives + @layer components
-                              (nav-link, btn-primary/outline, deco-sticker,
-                              gal-item/overlay/upload, reveal, etc.)
-  hooks/useReveal.js       – IntersectionObserver scroll-reveal hook
-  data/gallery.js          – gallery item + filter data
-  components/
-    Navbar.jsx             – sticky nav, scroll shadow, mobile menu, active link
-    Hero.jsx                – hero copy + floating sticker decorations
-    About.jsx               – "who we are" cards + copy
-    Services.jsx            – specialities grid (FeatureCard)
-    Gallery.jsx              – filterable grid, image upload, ContactCard-style items
-    Lightbox.jsx             – modal preview (Escape / click-outside to close)
-    Location.jsx             – Google Maps embed
-    Contact.jsx               – call / address / hours cards
-    Footer.jsx                 – brand mark + quick links
-    icons.jsx                  – shared outline SVG icon set
-```
-
-## What changed vs. the original
-
-- All vanilla-JS DOM manipulation (menu toggle, scroll reveal, gallery
-  filter, lightbox, image upload) is now React state/hooks — no
-  `document.getElementById` anywhere.
-- Utility classes (colors, spacing, typography, gradients, radii) are
-  Tailwind, using arbitrary values (`bg-[#0a0a0a]`, `bg-[radial-gradient(...)]`)
-  where the original used inline hex/gradient styles, so the palette is
-  reproduced exactly.
-- Repeated inline styles that acted like component classes (`.deco-sticker`,
-  `.nav-link`, `.btn-primary`, `.gal-item`, `.reveal`, …) are now Tailwind
-  `@layer components` classes built with `@apply` in `src/index.css`,
-  instead of a separate hand-written CSS file.
-- `animation-delay` per sticker is still passed via inline `style`, since
-  Tailwind has no arbitrary `animation-delay` utility — everything else is
-  a class.
-- Gallery items and filters are driven by a small data array
-  (`src/data/gallery.js`) instead of six copy-pasted `<div>` blocks.
